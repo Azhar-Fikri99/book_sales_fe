@@ -2,7 +2,7 @@
 
 // dibagian home, props yang mau kita kirim yaitu : ada 2
 
-import Button from "./Button"
+// import Button from "./Button"
 export default function Main(props){
     const{tech, btn} = props
     return(
@@ -18,7 +18,7 @@ export default function Main(props){
             {/* kita ganti dengna commpoent button */}
 
             {/* ini txt nya dari BUtton */}
-            <Button txt={btn} />
+            {/* <Button txt={btn} /> */}
         </main>
   
     </> 

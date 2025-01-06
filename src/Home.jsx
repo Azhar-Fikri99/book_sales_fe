@@ -1,6 +1,14 @@
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import Main from "./Components/Main";
+import Footer from "./components/shared/footer/index.jsx";
+// import Header from "./Components/Header";
+// import Main from "./Components/Main";
+// import Button from "./components/ui/Button/index.jsx";
+
+// kita bisa gak pakai index.jsx, karena sudah index, kalau file nya bukan index, harus di sebutkan
+import Contact from "./components/shared/Contact/index.jsx";
+import Team from "./components/shared/Team/index.jsx";
+import Navbar from "./components/shared/Navbar/index.jsx";
+import Hero from "./components/shared/Hero/index.jsx";
+
 
 
 // function Header(){
@@ -54,15 +62,34 @@ import Main from "./Components/Main";
 function Home(){
     return(
         <>
-            <Header/>
+
+        
+                {/* tugas : 
+                    <Navbar />
+                    <Hero />
+                */}
+            <Navbar/>
+            <Hero />
+
+
+            {/* <Header/>
             <Main tech="React" btn="Belajar React"/>
 
+            <Footer/> */}
             {/* ini kalau dibuat gini ada 2 pemanggilan function */}
             {/* <Main tech="React"/>
             <Main text="Belajar React"/> */}
 
-            <Footer/>
-     
+            {/* ini Team dari function nya */}
+                <Team />
+                <Contact/>
+
+                {/* kita bikin lagi footer nya */}
+                <Footer/>
+                {/* <Contact/> */}
+
+
+
         </>
     );
 }
