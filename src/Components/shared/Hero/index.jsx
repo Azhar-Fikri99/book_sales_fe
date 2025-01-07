@@ -1,39 +1,21 @@
-export default function Hero()
-{
-    return(
-        <div className="relative flex flex-col items-center max-w-screen-xl px-4 mx-auto md:flex-row sm:px-6 p-8">
-        <div className="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pr-10">
-            <div className="text-left">
-                <h2
-                    className="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
-                    Hero
-                    <span className="font-bold text-blue-500">Section</span>
-                    <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span>
-                </h2>
-                <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
-                </p>
-                <div className="mt-5 sm:flex md:mt-8">
-                    <div className="rounded-md shadow"><a href=""
-                            className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue md:py-4 md:text-lg md:px-10">
-                            Getting started
-                        </a></div>
-                    <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                        <a href=""
-                            className="flex items-center justify-center w-full px-8 py-3 text-base font-medium leading-6 text-blue-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-blue-600 focus:outline-none focus:shadow-outline-blue md:py-4 md:text-lg md:px-10">
-                            Contribute
-                        </a>
-                    </div>
-                </div>
-            </div>
+export default function Hero() {
+  return (
+    <section className="text-gray-600 body-font">
+      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
+            <br className="hidden lg:inline-block" />readymade gluten
+          </h1>
+          <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
+          <div className="flex justify-center">
+            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
+          </div>
         </div>
-        <div className="flex items-center py-5 md:w-1/2 md:pb-20 md:pt-10 md:pl-10">
-            <div className="relative w-full p-3 rounded  md:p-8">
-                <div className="rounded-lg bg-white text-black w-full">
-                    <img src="https://picsum.photos/400/300" />
-                </div>
-            </div>
+        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" />
         </div>
-    </div>
-    )
+      </div>
+    </section>
+  )
 }
