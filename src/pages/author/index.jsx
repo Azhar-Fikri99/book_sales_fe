@@ -2,10 +2,13 @@ import { useRef } from "react";
 import authors from "../../utils/constants/authors";
 
 export default function Author() {
+  //data awal gak boleh di otak atik
   let authorList = [...authors]; // salin data array constants/authors
+
+  //useRef(null) ini di ambil dari from react
   const authorContainerRef = useRef(null); // membuat container author
 
-  console.log(authors)
+console.log(authorList);
 
   const handleClick = () => {
     const newAuthor = {
@@ -16,6 +19,8 @@ export default function Author() {
 
     authorList.push(newAuthor);
     
+    // current itu sekarang,
+    // useRef nya kita bungkus di authorContainerRef
     if (authorContainerRef.current) {
       const newAuthorElement = document.createElement("div");
       newAuthorElement.className = "p-2 lg:w-1/4 md:w-1/2 w-full";
@@ -26,10 +31,11 @@ export default function Author() {
       `;
   
       authorContainerRef.current.appendChild(newAuthorElement);
+      
     }
-
-    console.log(authorList);
-    alert("Data berhasil ditambahkan")
+    
+  console.log(authorList);
+  alert("Data berhasil ditambahkan")
   }
 
   
