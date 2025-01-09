@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="text-gray-600 body-font">
       <div className="container px-5 py-8 mx-auto flex items-center justify-between sm:flex-row flex-col">
         <p className="text-sm text-gray-500 sm:py-2 sm:mt-0 mt-4">&copy; { currentYear } —
-          <a href="https://github.com/fakhirula" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@fakhirula</a>
+          <a href="https://github.com/Azhar-Fikri99" className="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@Azhar Fikri</a>
         </p>
         <span className="inline-flex sm:mt-0 mt-4 justify-center gap-3 sm:justify-start">
           <a className="text-gray-500">

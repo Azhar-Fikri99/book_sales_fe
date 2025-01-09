@@ -1,7 +1,7 @@
-
-export default function Dashboard()
-{
-  <>
-     Ini adalah halaman Admin
-  </>
+export default function Dashboard() {
+  return (
+    <>
+      <h1>Selamat Datang!</h1>
+    </>
+  )
 }
