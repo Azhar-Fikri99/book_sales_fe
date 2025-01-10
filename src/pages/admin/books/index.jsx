@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom"
+import { getBooks } from "../../../services/books"
+import { useEffect, useState } from "react"
 
 export default function Books() {
+  const [books, setBooks] = useState([]);  
+  
+  useEffect(() => {  
+    const fetchBooks = async () => {  
+      const data = await getBooks();  
+      setBooks(data);  
+    };  
+  
+    fetchBooks();  
+  }, []);
+
+  console.log(books)
+  
   return (
     <div
       className="rounded-sm shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
     >
-      <div className="max-w-full overflow-x-auto">
+      {books.length > 0 ?
+      books.map((book) => (
+      <div key={book.id} className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead className="border-b bg-gray-50 text-white">
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
@@ -52,7 +69,6 @@ export default function Books() {
                 <div className="flex items-center space-x-3.5">
                   <Link to="/admin/books/create"><i className="fa-solid fa-plus"></i></Link>
                   <Link to="/admin/books/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
-                  {/* <Link to=""><i className="fa-solid fa-trash"></i></Link> */}
                   <button>
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -86,7 +102,6 @@ export default function Books() {
                 <div className="flex items-center space-x-3.5">
                   <Link to="/admin/books/create"><i className="fa-solid fa-plus"></i></Link>
                   <Link to="/admin/books/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
-                  {/* <Link to=""><i className="fa-solid fa-trash"></i></Link> */}
                   <button>
                     <i className="fa-solid fa-trash"></i>
                   </button>
@@ -97,6 +112,9 @@ export default function Books() {
           </tbody>
         </table>
       </div>
+      )): (
+        <p>Tidak ada data</p>
+      )}
     </div>
   )
 }
