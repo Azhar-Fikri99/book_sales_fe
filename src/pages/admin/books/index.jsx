@@ -20,50 +20,68 @@ export default function Books() {
     <div
       className="rounded-sm shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
     >
-      {books.length > 0 ?
-      books.map((book) => (
-      <div key={book.id} className="max-w-full overflow-x-auto">
+      {/* ini pakai ternary */}
+    
+      <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead className="border-b bg-gray-50 text-white">
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
               <th
                 className="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white xl:pl-11"
               >
-                Package
+                Title
               </th>
               <th
                 className="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
               >
-                Invoice date
+                Description
               </th>
               <th
                 className="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
               >
-                Status
+                Stock
               </th>
               <th className="px-4 py-4 font-medium text-black dark:text-white">
-                Actions
+              cover_photo
+              </th>
+              <th className="px-4 py-4 font-medium text-black dark:text-white">
+              genre_id
+              </th>
+              <th className="px-4 py-4 font-medium text-black dark:text-white">
+              author_id
+              </th>
+              <th className="px-4 py-4 font-medium text-black dark:text-white">
+              Action
               </th>
             </tr>
           </thead>
           <tbody>
 
-            <tr className="hover:bg-gray-50">
+  
+          {books.length > 0 ?
+           books.map((book) => (
+            <tr key={book.id} className="hover:bg-gray-50">
               <td
                 className="px-4 py-5 pl-9 xl:pl-11"
               >
-                <h5 className="font-medium text-black dark:text-white">Free Package</h5>
-                <p className="text-sm">$0.00</p>
+                <h5 className="font-medium text-black dark:text-white">{book.title}</h5>
+                <p className="text-sm">{book.price}</p>
               </td>
               <td className="px-4 py-5">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
+                <p className="text-black dark:text-white">{book.description}</p>
               </td>
               <td className="px-4 py-5">
-                <p
-                  className="inline-flex rounded-full bg-success bg-opacity-10 px-3 py-1 text-sm font-medium text-success"
-                >
-                  Paid
-                </p>
+                <p className="text-black dark:text-white">{book.stock}</p>
+              </td>
+              <td className="px-4 py-5">
+                {/* <p className="text-black dark:text-white">{book.cover_photo}</p> */}
+                <img src="https://cineverse.id/wp-content/uploads/2023/08/timeskip-one-piece-awal-mula-new-world.jpg" alt="gambar"/>
+              </td>
+              <td className="px-4 py-5">
+                <p className="text-black dark:text-white">{book.genre_id}</p>
+              </td>
+              <td className="px-4 py-5">
+                <p className="text-black dark:text-white">{book.author_id}</p>
               </td>
               <td className="px-4 py-5">
                 <div className="flex items-center space-x-3.5">
@@ -76,45 +94,13 @@ export default function Books() {
               </td>
             </tr>
 
-
-
-
-            <tr className="hover:bg-gray-50">
-              <td
-                className="px-4 py-5 pl-9 xl:pl-11"
-              >
-                <h5 className="font-medium text-black dark:text-white">
-                  Standard Package
-                </h5>
-                <p className="text-sm">$59.00</p>
-              </td>
-              <td className="px-4 py-5">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="px-4 py-5">
-                <p
-                  className="inline-flex rounded-full bg-success bg-opacity-10 px-3 py-1 text-sm font-medium text-success"
-                >
-                  Paid
-                </p>
-              </td>
-              <td className="px-4 py-5">
-                <div className="flex items-center space-x-3.5">
-                  <Link to="/admin/books/create"><i className="fa-solid fa-plus"></i></Link>
-                  <Link to="/admin/books/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
-                  <button>
-                    <i className="fa-solid fa-trash"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            
+                )): (
+                  <p>Tidak ada data Buku</p>
+                )}
           </tbody>
         </table>
       </div>
-      )): (
-        <p>Tidak ada data</p>
-      )}
+  
     </div>
   )
 }

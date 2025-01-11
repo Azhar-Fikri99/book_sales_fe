@@ -14,6 +14,9 @@ import Login from "./pages/auth/login"
 import Register from "./pages/auth/register"
 import Contact from "./pages/public/contacts/index.jsx"
 import Teams from "./pages/public/teams/index.jsx"
+import Genres from "./pages/admin/genres/index.jsx"
+import Authors from "./pages/admin/authors/index.jsx"
+import PayMethods from "./pages/admin/paymentmethods/index.jsx"
 // import Contact from "./components/shared/Contact/index.jsx"
 // import Contacts from "./pages/admin/contacts/"
 // import Contacts from "./pages/public/contacts/"
@@ -65,6 +68,23 @@ function App() {
               
               <Route path="books">
                 <Route index element={<AdminBooks />} />
+                <Route path="create" element={<BookCreate />} />
+                <Route path="edit" element={<BookEdit />} />
+              </Route>
+
+              <Route path="Genres">
+                <Route index element={<Genres />} />
+                <Route path="create" element={<BookCreate />} />
+                <Route path="edit" element={<BookEdit />} />
+              </Route>
+
+
+              <Route path="Authors">
+                <Route index element={<Authors />} />
+              </Route>
+
+              <Route path="payment_methods">
+                <Route index element={<PayMethods />} />
                 <Route path="create" element={<BookCreate />} />
                 <Route path="edit" element={<BookEdit />} />
               </Route>

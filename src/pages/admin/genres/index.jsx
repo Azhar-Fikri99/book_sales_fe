@@ -1,4 +1,22 @@
+import { useEffect, useState } from "react";
+import { getGenres } from "../../../services/genres";
+
 export default function Genres() {
+
+  const [genres, setGenres] = useState([]);  
+    
+    useEffect(() => {  
+      const fetchGenres = async () => {  
+        const data = await getGenres();  
+        setGenres(data);  
+      };  
+    
+      fetchGenres();  
+    }, []);
+  
+    console.log(genres)
+    
+
   return (
     <div
       className="rounded-sm shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
@@ -15,25 +33,27 @@ export default function Genres() {
               <th
                 className="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white"
               >
-                Description
+                description
               </th>
-              <th className="px-4 py-4 font-medium text-black dark:text-white">
-                Actions
-              </th>
+           
             </tr>
           </thead>
           <tbody>
 
-            <tr className="hover:bg-gray-50">
+          {genres.length > 0 ?
+           genres.map((genre) => (
+            <tr key={genre.id} className="hover:bg-gray-50">
               <td
                 className="px-4 py-5 pl-9 xl:pl-11"
               >
-                <h5 className="font-medium text-black dark:text-white">Free Package</h5>
-                <p className="text-sm">$0.00</p>
+                <h5 className="font-medium text-black dark:text-white">{genre.name}</h5>
+         
               </td>
               <td className="px-4 py-5">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
+                <p className="text-black dark:text-white">{genre.description}</p>
               </td>
+
+{/*           
               <td className="px-4 py-5">
                 <div className="flex items-center space-x-3.5">
                   <a href=""><i className="fa-solid fa-plus"></i></a>
@@ -42,32 +62,13 @@ export default function Genres() {
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>
-              </td>
+              </td> */}
             </tr>
 
 
-
-
-            <tr className="hover:bg-gray-50">
-              <td
-                className="px-4 py-5 pl-9 xl:pl-11"
-              >
-                <h5 className="font-medium text-black dark:text-white">
-                  Standard Package
-                </h5>
-                <p className="text-sm">$59.00</p>
-              </td>
-              <td className="px-4 py-5">
-                <p className="text-black dark:text-white">Jan 13,2023</p>
-              </td>
-              <td className="px-4 py-5">
-                <div className="flex items-center space-x-3.5">
-                  <a href=""><i className="fa-solid fa-plus"></i></a>
-                  <a href=""><i className="fa-solid fa-pen-to-square"></i></a>
-                  <a href=""><i className="fa-solid fa-trash"></i></a>
-                </div>
-              </td>
-            </tr>
+)): (
+  <p>Tidak ada data Buku</p>
+)}
             
           </tbody>
         </table>

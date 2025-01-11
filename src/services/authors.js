@@ -2,7 +2,7 @@ import API from "../api";
 
 // export const getDatas = async () => {
   // kita ganti menjadi getBooks
-export const getBooks = async () => {
+export const getAuthors = async () => {
   // untuk get Data.
   // kita sudah definisikan di atas tadi axios nya
   // tinggal panggil pakai nama varaiable api
@@ -14,8 +14,8 @@ export const getBooks = async () => {
   //  return await API.get('/books');
 
   // kita mau destructoring
-  const {data} = await API.get('/books')
-   return data;
+  const {data} = await API.get('/authors')
+   return data.data;
    
  } 
 
