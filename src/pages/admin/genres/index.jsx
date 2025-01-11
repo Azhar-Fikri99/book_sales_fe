@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getGenres } from "../../../services/genres";
+import { Link } from "react-router-dom";
 
 export default function Genres() {
 
@@ -36,6 +37,12 @@ export default function Genres() {
                 description
               </th>
            
+              <th
+                className="min-w-[220px] px-4 py-4 font-medium text-black dark:text-white"
+              >
+                Action
+              </th>
+
             </tr>
           </thead>
           <tbody>
@@ -53,16 +60,16 @@ export default function Genres() {
                 <p className="text-black dark:text-white">{genre.description}</p>
               </td>
 
-{/*           
+          
               <td className="px-4 py-5">
                 <div className="flex items-center space-x-3.5">
-                  <a href=""><i className="fa-solid fa-plus"></i></a>
-                  <a href=""><i className="fa-solid fa-pen-to-square"></i></a>
+                  <Link to="/admin/genres/create"><i className="fa-solid fa-plus"></i></Link>
+                  <Link to="/admin/genres/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
                   <button>
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>
-              </td> */}
+              </td>
             </tr>
 
 

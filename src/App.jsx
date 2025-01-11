@@ -17,6 +17,10 @@ import Teams from "./pages/public/teams/index.jsx"
 import Genres from "./pages/admin/genres/index.jsx"
 import Authors from "./pages/admin/authors/index.jsx"
 import PayMethods from "./pages/admin/paymentmethods/index.jsx"
+import AuthorCreate from "./pages/admin/authors/create.jsx"
+import GenreCreate from "./pages/admin/genres/create.jsx"
+import GenreEdit from "./pages/admin/genres/edit.jsx"
+import AuthorEdit from "./pages/admin/authors/edit.jsx"
 // import Contact from "./components/shared/Contact/index.jsx"
 // import Contacts from "./pages/admin/contacts/"
 // import Contacts from "./pages/public/contacts/"
@@ -72,21 +76,23 @@ function App() {
                 <Route path="edit" element={<BookEdit />} />
               </Route>
 
-              <Route path="Genres">
+              <Route path="genres">
                 <Route index element={<Genres />} />
-                <Route path="create" element={<BookCreate />} />
-                <Route path="edit" element={<BookEdit />} />
+                <Route path="create" element={<GenreCreate />} />
+                <Route path="edit" element={<GenreEdit />} />
               </Route>
 
 
-              <Route path="Authors">
+              <Route path="authors">
                 <Route index element={<Authors />} />
+                <Route path="create" element={<AuthorCreate />} />
+                <Route path="edit" element={<AuthorEdit />} />
               </Route>
 
               <Route path="payment_methods">
                 <Route index element={<PayMethods />} />
-                <Route path="create" element={<BookCreate />} />
-                <Route path="edit" element={<BookEdit />} />
+                <Route path="create" element={<GenreCreate />} />
+                <Route path="edit" element={<GenreEdit />} />
               </Route>
             </Route>
                  

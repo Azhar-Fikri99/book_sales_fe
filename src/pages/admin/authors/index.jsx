@@ -1,6 +1,7 @@
 // import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getAuthors } from "../../../services/authors";
+import { Link } from "react-router-dom";
 
 export default function Authors() {
   const [authors, setAuthors] = useState([]);  
@@ -41,6 +42,12 @@ export default function Authors() {
               >
                 bio
               </th>
+
+              <th
+                className="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
+              >
+                Action
+              </th>
             
             </tr>
           </thead>
@@ -65,15 +72,15 @@ export default function Authors() {
               <p className="text-black dark:text-white">{author.bio}</p>
             </td>
 
-            {/* <td className="px-4 py-5">
+            <td className="px-4 py-5">
               <div className="flex items-center space-x-3.5">
-                <a href=""><i className="fa-solid fa-plus"></i></a>
-                <a href=""><i className="fa-solid fa-pen-to-square"></i></a>
+                <Link to="/admin/Authors/create"><i className="fa-solid fa-plus"></i></Link>
+                <Link to="/admin/Authors/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
                 <button>
                   <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
-            </td> */}
+            </td>
           </tr>
 
 
