@@ -1,6 +1,70 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createAuthor } from "../../../services/authors";
 
 export default function AuthorCreate() {
-  return (
+
+   // ini kita buat error 
+   const[errors, setErrors] = useState({})
+
+   const [authorData, setAuthorData] = useState({
+    name: "",
+    photo: "",
+    bio: ""
+    })
+
+const navigate = useNavigate();
+
+// di sini kita kasih Handle
+// Handle input change
+const handleInputChange = (event) => {
+  // ini kita destructoring, name adalah properti di HTML, value tempat ngirim data ke server
+  // kalau di Postmane itu nama nya Key
+  // value itu di Postman itu value juga
+  const {name, value} = event.target
+  setAuthorData({...authorData, [name]: value});
+}
+
+
+// Handle file Change
+const handleFileChange = (e) => {
+  // 0 karena yang di ambil nya 1
+  setAuthorData({...authorData,  photo: e.target.files[0]} )
+}
+
+
+// Handle form submit
+const  storeAuthor = async (e) => {
+  e.preventDefault()
+
+ // ini nama objec nya, bebas, berfungsi untuk menambahkan data
+  const formDataToSend = new FormData()
+
+  formDataToSend.append('name', authorData.name)
+  formDataToSend.append('photo', authorData.photo)
+  formDataToSend.append('bio', authorData.bio)
+
+
+  // biar lebih bagus kita bisa pakai try catch
+  try{
+      await createAuthor(formDataToSend);
+      navigate('/admin/authors')
+  }catch(error){
+    // catch(err){ bisa di singkat menjadi err
+    // console.log(err)
+    
+    // console.log(error)
+    // setErrors(error)
+
+    // kalau kita mau tau error, kita bisa di lihat console. kemudian axios, ada info tentang error, kayak repsonse
+    // kita kalau kita mau menampilkan erro untuk title, tinggal tambahkan .title
+    // console.log(error.response.data.message)
+    setErrors(error.response.data.message)
+  }
+}
+
+
+return (
     <div className="flex flex-col gap-9">
       <div
         className="rounded-sm bg-white shadow-default dark:bg-boxdark"
@@ -12,7 +76,7 @@ export default function AuthorCreate() {
             Add Data Authors
           </h3>
         </div>
-        <form action="#" className="py-5">
+        <form onSubmit={storeAuthor} action="#" className="py-5">
           <div className="p-6.5 flex flex-col gap-5">
 
             <div className="mb-4.5">
@@ -21,8 +85,17 @@ export default function AuthorCreate() {
               >
                 Name
               </label>
+              {errors.name && (
+                <div className="p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50">
+                    <span className="font-medium">{errors.name[0]}</span>
+                </div>
+              )}
               <input
                 type="text"
+                name="name"
+                // bookData itu adalah useState yang di atas
+                value={authorData.name}
+                onChange={handleInputChange}
                 className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-indigo-600 active:border-indigo-600 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-indigo-600"
               />
             </div>
@@ -36,7 +109,13 @@ export default function AuthorCreate() {
               >
                 Attach Photo
               </label>
+              {errors.photo && (
+                <div className="p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50">
+                    <span className="font-medium">{errors.photo[0]}</span>
+                </div>
+              )}
               <input
+                   onChange={handleFileChange}
                 type="file"
                 className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-normal outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:px-5 file:py-3 file:hover:bg-indigo-600 file:hover:bg-opacity-10 focus:border-indigo-600 active:border-indigo-600 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-indigo-600"
               />
@@ -48,7 +127,16 @@ export default function AuthorCreate() {
               >
                BIO
               </label>
+              {errors.bio && (
+                <div className="p-2 my-2 text-sm text-red-800 rounded-lg bg-red-50">
+                    <span className="font-medium">{errors.bio[0]}</span>
+                </div>
+              )}
               <textarea
+                        name="bio"
+                        // bookData itu adalah useState yang di atas
+                        value={authorData.bio}
+                        onChange={handleInputChange}
                 rows="6"
                 className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-indigo-600 active:border-indigo-600 disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-indigo-600"
               ></textarea>

@@ -1,20 +1,21 @@
 // import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getPaymentMethods } from "../../../services/paymentMethods";
+import { Link } from "react-router-dom";
 
 export default function PayMethods() {
-  const [authors, setAuthors] = useState([]);  
+  const [paymentmethods, setPaymentMethods] = useState([]);  
   
   useEffect(() => {  
-    const fetchAuthors = async () => {  
-      const data = await getPaymentMethods;  
-      setAuthors(data);  
+    const fetchPaymentMethods = async () => {  
+      const data = await getPaymentMethods();  
+      setPaymentMethods(data);  
     };  
   
-    fetchAuthors();  
+    fetchPaymentMethods();  
   }, []);
 
-  console.log(authors)
+  console.log(paymentmethods)
   
   return (
     <div
@@ -34,12 +35,18 @@ export default function PayMethods() {
               <th
                 className="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
               >
-                photo
+                account_number
               </th>
               <th
                 className="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white"
               >
-                bio
+                image
+              </th>
+
+              <th
+                className="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white"
+              >
+                Action
               </th>
             
             </tr>
@@ -47,33 +54,35 @@ export default function PayMethods() {
           <tbody>
 
   
-          {authors.length > 0 ?
-           authors.map((author) => (
-            <tr key={author.id} className="hover:bg-gray-50">
+          {paymentmethods.length > 0 ?
+           paymentmethods.map((pm) => (
+            <tr key={pm.id} className="hover:bg-gray-50">
             <td
               className="px-4 py-5 pl-9 xl:pl-11"
             >
-              <h5 className="font-medium text-black dark:text-white">{author.name}</h5>
+              <h5 className="font-medium text-black dark:text-white">{pm.name}</h5>
          
             </td>
             <td className="px-4 py-5">
-              {/* <p className="text-black dark:text-white">Jan 13,2023</p> */}
-              <img src="https://www.femalefirst.co.uk/image-library/partners/bang/land/1000/a/ari-aster-b84d4f0f425daa14d46910946d5ac94675a5fc7d.jpg"  />
+              <p className="text-black dark:text-white">{pm.account_number}</p>
+              {/* <img src="https://www.femalefirst.co.uk/image-library/partners/bang/land/1000/a/ari-aster-b84d4f0f425daa14d46910946d5ac94675a5fc7d.jpg"  /> */}
             </td>
 
             <td className="px-4 py-5">
-              <p className="text-black dark:text-white">{author.bio}</p>
+               {/* <img src="https://shl.co.id/wp-content/uploads/2022/11/lg-BCA-1.png"  /> */}
+               <img src={"http://127.0.0.1:8000/storage/payment_methods/" + pm.image} alt="gambar"/>
+
             </td>
 
-            {/* <td className="px-4 py-5">
+            <td className="px-4 py-5">
               <div className="flex items-center space-x-3.5">
-                <a href=""><i className="fa-solid fa-plus"></i></a>
-                <a href=""><i className="fa-solid fa-pen-to-square"></i></a>
+                <Link to="/admin/payment_methods/create"><i className="fa-solid fa-plus"></i></Link>
+                <Link to="/admin/payment_methods/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
                 <button>
                   <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
-            </td> */}
+            </td>
           </tr>
 
 

@@ -16,6 +16,30 @@ export const getBooks = async () => {
   // kita mau destructoring
   const {data} = await API.get('/books')
    return data;
-   
  } 
 
+
+ export const createBook = async(data) =>
+ {
+
+    try{
+      const response  = await API.post('/books', data)  // endpoint
+      return response.data;
+    }catch(error) {
+      console.log(error);
+      throw error
+    }
+ }  
+
+
+ // ini untuk hapus data
+//  kita pakai try catch
+
+export const deleteBook = async(id) => {
+  try{
+    await API.delete(`/books/${id}`)      // ini pakai backtick
+  }catch (error){
+    console.log(error)
+    throw error
+  }
+}

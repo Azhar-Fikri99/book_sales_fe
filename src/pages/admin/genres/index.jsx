@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getGenres } from "../../../services/genres";
+import { deleteGenre, getGenres } from "../../../services/genres";
 import { Link } from "react-router-dom";
 
 export default function Genres() {
@@ -16,6 +16,19 @@ export default function Genres() {
     }, []);
   
     console.log(genres)
+    
+
+     const handleDelete = async (id) => {
+        // deleteBook dari services jangan lupa di inport
+       const confirmDelete =  window.confirm("Apakah Anda yakin ingin Menghapus Data ini ?");
+    
+       if(confirmDelete){
+          await deleteGenre(id)
+    
+        // ini kita update pakai setter Books
+        setGenres(genres.filter(genre => genre.id !== id))
+        }
+      }
     
 
   return (
@@ -65,7 +78,7 @@ export default function Genres() {
                 <div className="flex items-center space-x-3.5">
                   <Link to="/admin/genres/create"><i className="fa-solid fa-plus"></i></Link>
                   <Link to="/admin/genres/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
-                  <button>
+                  <button onClick={ () =>  handleDelete(genre.id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
                 </div>

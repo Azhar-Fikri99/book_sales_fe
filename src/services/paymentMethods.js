@@ -15,6 +15,18 @@ export const getPaymentMethods = async () => {
 
   // kita mau destructoring
   const {data} = await API.get('/payment_methods')
-   return data;
+   return data.data;
    
  } 
+ export const createPaymentMethod = async(data) =>
+  {
+ 
+     try{
+       const response  = await API.post('/payment_methods', data)  // endpoint
+       return response.data;
+     }catch(error) {
+       console.log(error);
+       throw error
+     }
+  }  
+ 

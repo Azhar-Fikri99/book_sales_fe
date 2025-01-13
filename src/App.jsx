@@ -21,6 +21,8 @@ import AuthorCreate from "./pages/admin/authors/create.jsx"
 import GenreCreate from "./pages/admin/genres/create.jsx"
 import GenreEdit from "./pages/admin/genres/edit.jsx"
 import AuthorEdit from "./pages/admin/authors/edit.jsx"
+import PaymentMethodCreate from "./pages/admin/paymentmethods/create.jsx"
+import PaymentMethodEdit from "./pages/admin/paymentmethods/edit.jsx"
 // import Contact from "./components/shared/Contact/index.jsx"
 // import Contacts from "./pages/admin/contacts/"
 // import Contacts from "./pages/public/contacts/"
@@ -91,8 +93,8 @@ function App() {
 
               <Route path="payment_methods">
                 <Route index element={<PayMethods />} />
-                <Route path="create" element={<GenreCreate />} />
-                <Route path="edit" element={<GenreEdit />} />
+                <Route path="create" element={<PaymentMethodCreate />} />
+                <Route path="edit" element={<PaymentMethodEdit />} />
               </Route>
             </Route>
                  

@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getAuthors } from "../../../services/authors";
+import { deleteAuthor, getAuthors } from "../../../services/authors";
 import { Link } from "react-router-dom";
 
 export default function Authors() {
@@ -17,6 +17,21 @@ export default function Authors() {
 
   console.log(authors)
   
+
+ 
+   const handleDelete = async (id) => {
+     // deleteBook dari services jangan lupa di inport
+    const confirmDelete =  window.confirm("Apakah Anda yakin ingin Menghapus Data ini ?");
+ 
+    if(confirmDelete){
+       await deleteAuthor(id)
+ 
+     // ini kita update pakai setter Books
+     setAuthors(authors.filter(author => author.id !== id))
+     }
+   }
+ 
+
   return (
     <div
       className="rounded-sm shadow-default dark:bg-boxdark sm:px-7.5 xl:pb-1"
@@ -76,7 +91,7 @@ export default function Authors() {
               <div className="flex items-center space-x-3.5">
                 <Link to="/admin/Authors/create"><i className="fa-solid fa-plus"></i></Link>
                 <Link to="/admin/Authors/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
-                <button>
+                <button onClick={ () =>  handleDelete(author.id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
               </div>
