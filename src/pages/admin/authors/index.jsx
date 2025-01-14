@@ -80,7 +80,7 @@ export default function Authors() {
             </td>
             <td className="px-4 py-5">
               {/* <p className="text-black dark:text-white">Jan 13,2023</p> */}
-              <img src="https://www.femalefirst.co.uk/image-library/partners/bang/land/1000/a/ari-aster-b84d4f0f425daa14d46910946d5ac94675a5fc7d.jpg"  />
+              <img src={"http://127.0.0.1:8000/storage/authors/" + author.photo} alt="gambar"/>
             </td>
 
             <td className="px-4 py-5">
@@ -90,7 +90,7 @@ export default function Authors() {
             <td className="px-4 py-5">
               <div className="flex items-center space-x-3.5">
                 <Link to="/admin/Authors/create"><i className="fa-solid fa-plus"></i></Link>
-                <Link to="/admin/Authors/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
+                <Link to={`/admin/Authors/edit/${author.id}`}><i className="fa-solid fa-pen-to-square"></i></Link>
                 <button onClick={ () =>  handleDelete(author.id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>

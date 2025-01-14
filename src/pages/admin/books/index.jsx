@@ -156,7 +156,7 @@ export default function Books() {
               <td className="px-4 py-5">
                 <div className="flex items-center space-x-3.5">
                   <Link to="/admin/books/create"><i className="fa-solid fa-plus"></i></Link>
-                  <Link to="/admin/books/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
+                  <Link to={`/admin/books/edit/${book.id}`}><i className="fa-solid fa-pen-to-square"></i></Link>
                   <button onClick={ () =>  handleDelete(book.id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>

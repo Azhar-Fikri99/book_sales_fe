@@ -75,26 +75,26 @@ function App() {
               <Route path="books">
                 <Route index element={<AdminBooks />} />
                 <Route path="create" element={<BookCreate />} />
-                <Route path="edit" element={<BookEdit />} />
+                <Route path="edit/:id" element={<BookEdit />} />
               </Route>
 
               <Route path="genres">
                 <Route index element={<Genres />} />
                 <Route path="create" element={<GenreCreate />} />
-                <Route path="edit" element={<GenreEdit />} />
+                <Route path="edit/:id" element={<GenreEdit />} />
               </Route>
 
 
               <Route path="authors">
                 <Route index element={<Authors />} />
                 <Route path="create" element={<AuthorCreate />} />
-                <Route path="edit" element={<AuthorEdit />} />
+                <Route path="edit/:id" element={<AuthorEdit />} />
               </Route>
 
               <Route path="payment_methods">
                 <Route index element={<PayMethods />} />
                 <Route path="create" element={<PaymentMethodCreate />} />
-                <Route path="edit" element={<PaymentMethodEdit />} />
+                <Route path="edit/:id" element={<PaymentMethodEdit />} />
               </Route>
             </Route>
                  

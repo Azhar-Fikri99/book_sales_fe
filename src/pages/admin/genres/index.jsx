@@ -77,7 +77,7 @@ export default function Genres() {
               <td className="px-4 py-5">
                 <div className="flex items-center space-x-3.5">
                   <Link to="/admin/genres/create"><i className="fa-solid fa-plus"></i></Link>
-                  <Link to="/admin/genres/edit"><i className="fa-solid fa-pen-to-square"></i></Link>
+                  <Link to={`/admin/genres/edit/${genre.id}`}><i className="fa-solid fa-pen-to-square"></i></Link>
                   <button onClick={ () =>  handleDelete(genre.id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>

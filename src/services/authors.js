@@ -47,3 +47,16 @@ export const deleteAuthor = async(id) => {
     throw error
   }
 }
+
+
+
+// update, kita butuh id dan data
+export const updateAuthor = async (id, data) =>{
+  try { 
+     const response = await API.post(`/authors/${id}`, data)  // endpoints
+     return response.data;
+  }catch (err){
+     console.log(err)
+     throw err
+  }
+ }
