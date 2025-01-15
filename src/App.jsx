@@ -59,12 +59,13 @@ function App() {
               <Route path="books" element={<PublicBooks />} />
               <Route path="contacts" element={<Contact/>} />
               <Route path="teams" element={<Teams/>} />
+              <Route path="logout" element={<Home/>} />
             </Route>
 
             {/* Auth Routes */}
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-
+            
             
           
 
