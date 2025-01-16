@@ -23,6 +23,7 @@ export const getBooks = async () => {
  {
 
     try{
+      // ini mengikuti API laravel
       const response  = await API.post('/books', data)  // endpoint
       return response.data;
     }catch(error) {
@@ -54,4 +55,17 @@ export const updateBook = async (id, data) =>{
     console.log(err)
     throw err
  }
+}
+
+
+//untuk menampilkan 1 buku
+export const showBook = async (id) => {
+  // di destructoring pakai kurung kurawal
+  try{
+      const {data} = await API.get(`/books/${id}`) // endpoint
+      return data.data
+  }catch(err){
+    console.log(err)
+    throw err
+  }
 }

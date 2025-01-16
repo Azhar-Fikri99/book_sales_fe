@@ -23,6 +23,7 @@ import GenreEdit from "./pages/admin/genres/edit.jsx"
 import AuthorEdit from "./pages/admin/authors/edit.jsx"
 import PaymentMethodCreate from "./pages/admin/paymentmethods/create.jsx"
 import PaymentMethodEdit from "./pages/admin/paymentmethods/edit.jsx"
+import BookDetail from "./pages/public/books/detail.jsx"
 // import Contact from "./components/shared/Contact/index.jsx"
 // import Contacts from "./pages/admin/contacts/"
 // import Contacts from "./pages/public/contacts/"
@@ -59,7 +60,7 @@ function App() {
               <Route path="books" element={<PublicBooks />} />
               <Route path="contacts" element={<Contact/>} />
               <Route path="teams" element={<Teams/>} />
-              <Route path="logout" element={<Home/>} />
+              <Route path="books/:id" element={<BookDetail/>} />
             </Route>
 
             {/* Auth Routes */}
